@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Post = require("../BlogSchemas/Post");
 
 //CREATE POST
-router.post("/posts", async (req, res) => {
+router.post("/", async (req, res) => {
     const newPost =new Post(req.body);
     try {
       const savePost = await newPost.save();

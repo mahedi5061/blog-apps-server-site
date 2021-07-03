@@ -1,10 +1,9 @@
 const express=require('express');
-const bodyParser=require('body-parser');
-const cors=require('cors');
 const routeAuth=require('./routes/auth');
 const userRoute=require('./routes/user');
 const userPost=require('./routes/post');
 const categoryRoute=require('./routes/categories');
+const multer=require('multer')
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
@@ -19,6 +18,20 @@ useCreateIndex: true,
 .then(console.log("MongoDB is running..."))
 .catch((err) => console.log(err));
 
+const storage=multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,"blogImages")
+    },
+    filename:(req,file,cb)=>{
+        cb(null,"hello.jpg")
+    }
+})
+
+const upload=multer({storage:storage});
+
+app.post('/upload',upload.single("file"),(req,res)=>{
+    res.status(200).json("File successfully upload!")
+})
 
 app.use("/auth",routeAuth);
 app.use("/user",userRoute);

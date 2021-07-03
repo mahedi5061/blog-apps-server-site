@@ -8,6 +8,6 @@ const CategoriesSchema=new mongoose.Schema({
 },
 {timestamps:true}
 );
-const CategoriesInfoSchema =mongoose.model("Post",CategoriesSchema);
+const CategoriesInfoSchema =mongoose.model("Category",CategoriesSchema);
 
 module.exports=CategoriesInfoSchema;

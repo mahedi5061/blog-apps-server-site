@@ -2,7 +2,8 @@ const express=require('express');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 const routeAuth=require('./routes/auth');
-const userRoutes=require('./routes/user')
+const userRoutes=require('./routes/user');
+const userPost=require('./routes/post');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
@@ -19,7 +20,8 @@ useCreateIndex: true,
 
 
 app.use("/auth",routeAuth);
-app.use("/user",userRoutes)
+app.use("/user",userRoutes);
+app.use("/post",userPost)
 
 app.listen('5000',()=>{
     console.log('Server is running...');

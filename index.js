@@ -36,7 +36,7 @@ app.post('/upload',upload.single("file"),(req,res)=>{
 app.use("/auth",routeAuth);
 app.use("/user",userRoute);
 app.use("/post",userPost);
-app.use("/categories",categoryRoute)
+app.use("/categories",categoryRoute);
 
 app.listen('5000',()=>{
     console.log('Server is running...');

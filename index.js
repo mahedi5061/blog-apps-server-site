@@ -3,12 +3,14 @@ const routeAuth=require('./routes/auth');
 const userRoute=require('./routes/user');
 const userPost=require('./routes/post');
 const categoryRoute=require('./routes/categories');
-const multer=require('multer')
+const multer=require('multer');
+const path=require('path');
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
 const app=express();
 app.use(express.json());
+app.use("/images", express.static(path.join(__dirname,"/blogImages")));
 const MONGO_URL =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.taqt5.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
 mongoose.connect(MONGO_URL,{
 useNewUrlParser: true,

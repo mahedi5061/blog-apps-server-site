@@ -6,9 +6,10 @@ const Post = require("../BlogSchemas/Post");
 //UPDATE
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id) {
-    if (req.body.password) {
-      req.body.password = await bcrypt.hash(req.body.password, 10);
-    }
+    //update password system...
+    // if (req.body.password) {
+    //   req.body.password = await bcrypt.hash(req.body.password, 10);
+    // }
     try {
       const updateUser = await User.findByIdAndUpdate(
         req.params.id,
